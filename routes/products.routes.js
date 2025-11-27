@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const products = require('../controllers/products.controller');
-const { authBearer } = require('../middlewares/auth.middlewares');
+const authBearer = require('../middlewares/auth.middlewares');
 
 router.get('/', products.getProducts);
 router.get('/:id', products.getProductById);

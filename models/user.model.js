@@ -1,16 +1,16 @@
-const db = require('../db'); 
+const db = require('../db');
 const User = {
 
   getAll: (callback) => {
     db.query('SELECT * FROM users', callback);
   },
 
-  
+
   getById: (id, callback) => {
     db.query('SELECT * FROM users WHERE id = ?', [id], callback);
   },
 
- 
+
   create: (data, callback) => {
     db.query(
       'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
@@ -28,10 +28,15 @@ const User = {
     );
   },
 
- 
+
   delete: (id, callback) => {
-    db.query('DELETE FROM users WHERE id = ?', [id], callback);
-  }
+    db.query('DELETE FROM users WHERE ID = ?', [id], callback);
+  },
+
+  // Get user by Email (untuk login)
+  findByEmail: (email, callback) => {
+    db.query('SELECT * FROM users WHERE email = ?', [email], callback);
+  },
 };
 
 module.exports = User;
